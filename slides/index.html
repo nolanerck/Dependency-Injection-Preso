@@ -679,7 +679,7 @@ DIFramework.runWithAdvice( “drawSalesReport”,
 					<p>e.g. try/catch blocks.</p>
 				</section>
 
-				<section data-markdown>
+				<section>
 					<h2>Aspect Oriented Programming (AOP)</h2>
 					<p>Say I have a query like so:</p>
 <pre class="code">
@@ -690,7 +690,7 @@ DIFramework.runWithAdvice( “drawSalesReport”,
 					
 					<p>In Production, I want that wrapped in a try/catch, but in QA/Development, I don't.  (So I can see the debug output, etc.)</p>
 				</section>
-				<section data-markdown>
+				<section>
 					<h2>Aspect Oriented Programming (AOP)</h2>
 I'd have to set some kind of “flag”:
 <pre class="code">
@@ -716,7 +716,7 @@ I'd have to set some kind of “flag”:
 					</p>
 				</section>
 
-				<section data-markdown>
+				<section>
 					<h2>Aspect Oriented Programming (AOP)</h2>
 
 					<p>Instead of calling a getUsers() method directly:</p>
@@ -730,7 +730,7 @@ I'd have to set some kind of “flag”:
 </pre>
 				</section>
 
-				<section data-markdown>
+				<section>
 					<h2>Aspect Oriented Programming (AOP)</h2>
 <pre class="code">
 &lt;advice around functionName=”getUsersWithAdvice”&gt;
@@ -748,6 +748,50 @@ catch{ … }
 }
 }
 </pre>
+				</section>
+
+				<section>
+					<h2>Aspect Oriented Programming (AOP)</h2>
+					<p>Can also use it for...</p>
+					<p>SaaS feature flags - turn on functionality only when a customer pays for it.  No need to edit code, just toggle a config.</p>
+					<p>Swap out 3rd party/vendor integrations easily.</p>
+					<p>Cranky vendor: “it will take you months to remove our tech from your product.”</p>
+					<p>App with AOP: "No, actually it will take me 5 minutes"</p>
+				</section>
+
+				<section>
+					<h2>So what’s the catch?</h2>
+
+					<p>A new way of thinking about how you build your classes</p>
+					<p>Takes some getting used to</p>
+					<p>
+						A little extra “set up” work.<br />
+						Naming conventions, or typing some XML.
+					</p>
+					<p>Debugging errors can be slower at first due to learning curve</p>
+					<p>...but...</p>
+				</section>
+
+				<section>
+					<h2>So what’s the catch?</h2>
+					<p>...but...</p>
+					<p>It makes your code more reusable…</p>
+					<p>More flexible...</p>
+					<p>Easier to test...</p>
+					<p>Easier to turn features (aka “aspects”) on/off easily...</p>
+				</section>
+
+				<section>
+					<h2>So what’s the catch?</h2>
+					<p>"But now I have tons of files in my app!”</p>
+					<p>So what?</p>
+					<p>Breathe.</p>
+					<p>Use version control to keep them safe.</p>
+					<p>Each file does “1 thing”. Easy to know which file you’ll need to edit.</p>
+				</section>
+
+				<section>
+					<h2>Remember...</h2>
 				</section>
 
 			</div>
