@@ -614,7 +614,7 @@ rg.setMusician( m );
 				</section>
 
 				<section data-background-image="./images/mad_scientist.png" data-background-size="contain">
-					<h2 style="color:#93a1a1;">>Aspect Oriented Programming (AOP)</h2>
+					<h2 style="color:#002B36;">Aspect Oriented Programming (AOP)</h2>
 				</section>
 
 				<section>
@@ -678,6 +678,17 @@ DIFramework.runWithAdvice( “drawSalesReport”,
 					<p>But wait, there's more!</p>
 					<p>Can also wrap “blocks” of code around each other, not just function calls before/after each other.</p>
 					<p>e.g. try/catch blocks.</p>
+				</section>
+
+				<section>
+					<h2>Aspect Oriented Programming (AOP)</h2>
+					<p>Say I have a query like so:</p>
+<pre><code class="hljs" data-trim contenteditable>
+<cfquery name=”qryGetUsers”>
+SELECT * FROM Users
+</cfquery>
+</code></pre>
+					<p>In Production, I want that wrapped in a try/catch, but in QA/Development, I don't.  (So I can see the debug output, etc.)</p>
 				</section>
 
 			</div>
