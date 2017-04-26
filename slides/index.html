@@ -613,9 +613,8 @@ rg.setMusician( m );
 					<p>Off topic: discussing if Pete is better/worse than Ringo.</p>
 				</section>
 
-				<section>
-					<h2>Aspect Oriented Programming (AOP)</h2>
-					<img src="./images/mad_scientist.png" />
+				<section data-background-image="./images/mad_scientist.png" data-background-size="contain">
+					<h2 style="color:#93a1a1;">>Aspect Oriented Programming (AOP)</h2>
 				</section>
 
 				<section>
@@ -643,14 +642,42 @@ rg.setMusician( m );
 
 				<section>
 					<h2>Aspect Oriented Programming (AOP)</h2>
-<p>Example: drawSalesReport()</p>
-<p>In your AOP library:</p>
+					<p>Example: drawSalesReport()</p>
+					<p>In your AOP library:</p>
 &lt;pre class="code"&gt;
 &lt;func name=”drawSalesReport”&gt;
 &lt;aspect before run=”checkIfLoggedIn” /&gt;
 &lt;aspect after run=”saveToDebugLogFile” /&gt;
 &lt;/func&gt;
 </pre>		
+				</section>
+
+				<section>
+					<h2>Aspect Oriented Programming (AOP)</h2>
+
+					<p>In your code, it USED to look like this:</p>
+<pre class="code">
+checkIfLoggedIn();
+drawSalesReport( UserID=555, 
+				 dtCreated='1/1/2015' );
+SaveToDebugLogFile();
+</pre>
+
+					<p>What happens now is...</p>
+<pre class="code">
+DIFramework.runWithAdvice( “drawSalesReport”, 
+						   { UserID=555, 
+                             dtCreated='1/1/2015' } );
+</pre>
+
+					<p>and that does all 3 things, in correct order.</p>
+				</section>
+
+				<section>
+					<h2>Aspect Oriented Programming (AOP)</h2>
+					<p>But wait, there's more!</p>
+					<p>Can also wrap “blocks” of code around each other, not just function calls before/after each other.</p>
+					<p>e.g. try/catch blocks.</p>
 				</section>
 
 			</div>
