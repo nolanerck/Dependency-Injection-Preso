@@ -190,10 +190,9 @@
 						<em>
 							The nice thing about D/I is you can use it or not use it. If you want to write code the “old way" 
 							in part of your app, there's nothing stopping you from doing so. It will all still work as-is.
-							<br /><br />
-							Neat huh? Let's learn a bit more, shall we?
 						</em>
 					</p>
+					<p class="fragment centered">Neat huh? Let's learn a bit more, shall we?</p>
 				</section>
 
 				<!-- Bean Management -->
@@ -680,14 +679,14 @@ DIFramework.runWithAdvice( “drawSalesReport”,
 					<p>e.g. try/catch blocks.</p>
 				</section>
 
-				<section>
+				<section data-markdown>
 					<h2>Aspect Oriented Programming (AOP)</h2>
 					<p>Say I have a query like so:</p>
-<pre><code class="hljs" data-trim contenteditable>
-<cfquery name=”qryGetUsers”>
-SELECT * FROM Users
-</cfquery>
-</code></pre>
+					<script type="text/template">
+						<cfquery name=”qryGetUsers”>
+							SELECT * FROM Users
+						</cfquery>
+					</script>
 					<p>In Production, I want that wrapped in a try/catch, but in QA/Development, I don't.  (So I can see the debug output, etc.)</p>
 				</section>
 
