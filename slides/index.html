@@ -32,6 +32,11 @@
 				text-align: center;
 			}
 
+			.reveal .darkfont
+			{
+				color: brown;
+			}
+
 		</style>
 	</head>
 
@@ -187,7 +192,7 @@
 
 				<!-- Bean Management -->
 				<section data-background-image="./images/bean_mgmt.png" data-background-size="contain">
-					<h2>Bean Management</h2>
+					<h2 class="darkfont">Bean Management</h2>
 				</section>
 
 				<section>
@@ -208,7 +213,7 @@ bean id="myDateUtils" class="DateUtils"
 				</section>
 
 				<section>
-					<h2>Bean Management - First Example</h2>
+					<h2>Bean Management - Example</h2>
 					<p>MailService.cfc</p>
 <pre class="code">
 &lt;cfcomponent&gt;
@@ -228,7 +233,7 @@ myMailService.sendEmail( to="...", from="...", body="..." );
 				</section>
 
 				<section>
-					<h2>Bean Management - First Example</h2>
+					<h2>Bean Management - Example</h2>
 <pre class="code">
 myMailSvc = DILibrary.getBean( “MailService” );
 
@@ -238,7 +243,7 @@ myMailSvc.sendEmail( to=”...”,
 </pre>
 					<p>
 						Cute, but we haven't gained anything yet.<br />
-						CreateObject() was 1 line of code<br />
+						CreateObject() was 1 line of code.<br />
 						DI.getBean() is 1 line if code.
 					</p>
 					<p>
