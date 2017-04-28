@@ -27,7 +27,7 @@ component extends="WireBox.system.ioc.config.Binder"{
 			
 			// Or do it this way....
 			// Package scan locations
-			scanLocations = [ "models" ],
+			scanLocations = [ "wbBeanWithDefaultValues.models" ],
 			
 			// Stop Recursions
 			stopRecursions = [],
