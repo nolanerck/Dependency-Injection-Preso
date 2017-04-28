@@ -7,9 +7,12 @@ component implements="wirebox.system.aop.MethodInterceptor"
 
 	function invokeMethod( required any invocation ) output="false"
 	{
-		WriteOutput( "Performing security/permissions check before my Musician object is invoked...<br />" );
-		arguments.invocation.proceed();
-		WriteOutput( "Sending a log entry to the database, noting that this was run correctly on #Now()#...<br />" );
+		var response = arguments.invocation.proceed();
+		
+		response = "checking permissions...<br />" & response & "<br />logging this call to a security audit log...";
+
+		return response;
 	}
+
 }
 

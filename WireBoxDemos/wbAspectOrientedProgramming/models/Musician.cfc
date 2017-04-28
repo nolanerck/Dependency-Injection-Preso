@@ -13,9 +13,8 @@ component
 
 	public any function displayMusicianDetails()
 	{
-		WriteOutput( "Name: " & variables.name );
-		WriteOutput( "<br />" );
-		WriteOutput( "Instrument: " & variables.instrument );
+		var output = "Name: #variables.name# <br />Instrument: #variables.instrument#";
+		return output;
 	}
 
 }
