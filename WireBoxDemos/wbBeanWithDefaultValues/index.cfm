@@ -7,10 +7,6 @@
 
 <cfset wirebox = createObject( "component", "wirebox.system.ioc.Injector" ).init(  binder = myConfig ) />
 
-<!--- get it with the "real" object name, note what displayInfo() returns --->
-<cfset wirebox.getInstance( "Musician" ).displayInfo() />
-
 <!--- get it with the 'alias' from our Binder myConfig. note how displayInfo() used the map() settings. --->
-<cfset wirebox.getInstance( "demoMusician" ).displayInfo() />
-
+<cfset wirebox.getInstance( "constructedMusician" ).displayInfo() />
 

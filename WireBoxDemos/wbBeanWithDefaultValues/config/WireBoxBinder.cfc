@@ -20,9 +20,9 @@ component extends="WireBox.system.ioc.config.Binder"{
 			
 		};
 		
-		map( "demoMusician" ).to( "wbBeanWithDefaultValues.models.Musician" )
-						  	 .initArg( name="name", value="Les Claypool" )
-						  	 .initArg( name="instrument", value="Bass Guitar" );
+		map( "constructedMusician" ).to( "wbBeanWithDefaultValues.models.Musician" )
+						  	 		.initArg( name="name", value="Les Claypool" )
+						  	 		.initArg( name="instrument", value="Bass Guitar" );
 
 	}	
 

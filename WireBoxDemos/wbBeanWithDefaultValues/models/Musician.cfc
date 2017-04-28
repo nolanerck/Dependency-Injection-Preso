@@ -1,12 +1,12 @@
 component
 {
-	variables.name = "";
-	variables.instrument = "";
+	variables.name = "John Lennon";
+	variables.instrument = "Guitar";
 
-	public any function init()
+	public any function init( string name, string instrument )
 	{
-		variables.name = "John Lennon";
-		variables.instrument = "Guitar";
+		variables.name = arguments.name;
+		variables.instrument = arguments.instrument;
 	}
 
 	public any function displayInfo()
