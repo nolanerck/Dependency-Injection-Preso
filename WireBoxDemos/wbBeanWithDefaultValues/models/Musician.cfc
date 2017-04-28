@@ -14,6 +14,7 @@ component
 		WriteOutput( "Name: " & variables.name );
 		WriteOutput( "<br />" );
 		WriteOutput( "Instrument: " & variables.instrument );
+		WriteOutput( "<br />" );
 	}
 
 }

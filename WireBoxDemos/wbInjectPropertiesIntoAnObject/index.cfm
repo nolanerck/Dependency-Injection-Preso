@@ -3,11 +3,11 @@
 	and providing some defaults for the Musician CFC from outside that file.
 --->
 
-<cfset myConfig = createObject( "component", "config.WireBoxInjectionDemo" ) />
+<cfset myConfig = createObject( "component", "config.WireBoxBinder" ) />
 
 <cfset wirebox = createObject( "component", "wirebox.system.ioc.Injector" ).init(  binder = myConfig ) />
 
-<cfset wirebox.getInstance( "demoRockGroup" ).showBandDetails() />
+<cfset wirebox.getInstance( "constructedRockGroup" ).showBandDetails() />
 
 
 

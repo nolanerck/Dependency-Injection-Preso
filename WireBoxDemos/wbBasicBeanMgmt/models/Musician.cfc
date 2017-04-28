@@ -5,7 +5,7 @@ component
 
 	public any function init()
 	{
-		variables.name = "John Lennon";
+		variables.name = "George Harrison";
 		variables.instrument = "Guitar";
 	}
 

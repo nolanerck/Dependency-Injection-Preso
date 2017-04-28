@@ -14,11 +14,7 @@ component extends="WireBox.system.ioc.config.Binder"
 				enabled = true,
 				scope   = "application", // server, cluster, session, application
 				key		= "wireBox"
-			},
-			
-			// Package scan locations
-			scanLocations = [ "models" ]
-			
+			}			
 		};
 		
 	}	

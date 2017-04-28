@@ -27,7 +27,7 @@ component extends="WireBox.system.ioc.config.Binder"{
 			
 			// Or do it this way....
 			// Package scan locations
-			scanLocations = [ "wbBeanWithDefaultValues.models" ],
+			scanLocations = [ "wbInjectOneObjectInAnother.models" ],
 			
 			// Stop Recursions
 			stopRecursions = [],
@@ -41,6 +41,10 @@ component extends="WireBox.system.ioc.config.Binder"{
 			]			
 		};
 		
-	}	
+	}
+
+	map( "constructedRockGroup" ).to( "wbInjectPropertiesIntoAnObject.models.RockGroup" )
+						  		 .initArg( name="groupName", value="Depehe Mode" )
+						  		 .initArg( name="genre", value="Synth-Pop" );
 
 }

@@ -16,10 +16,14 @@ component extends="WireBox.system.ioc.config.Binder"{
 			},
 
 			// Package scan locations
-			scanLocations = [ "wbBasicBeanMgmt.models" ]
+			scanLocations = [ "wbBeanWithDefaultValues.models" ]
 			
 		};
 		
+		map( "demoMusician" ).to( "wbBeanWithDefaultValues.models.Musician" )
+						  	 .initArg( name="name", value="Les Claypool" )
+						  	 .initArg( name="instrument", value="Bass Guitar" );
+
 	}	
 
 }
