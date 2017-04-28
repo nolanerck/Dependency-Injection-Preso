@@ -1,7 +1,7 @@
 <!--- super easy use of WireBox to do Dependency Injection in a non-ColdBox app --->
 
-<cfset injector = createObject( "component", "wirebox.system.ioc.Injector" ).init() />
+<cfset wirebox = createObject( "component", "wirebox.system.ioc.Injector" ).init() />
 
-<cfset injector.getInstance( "wbHelloWorld.models.Musician" ).displayInfo() />
+<cfset wirebox.getInstance( "wbHelloWorld.models.Musician" ).displayInfo() />
 
 
