@@ -7,6 +7,6 @@
 
 <cfset injector = createObject( "component", "wirebox.system.ioc.Injector" ).init(  binder = myConfig ) />
 
-<cfset injector.getInstance( "Musician" ).displayInfo() />
+<cfset injector.getInstance( target="Musician", initArguments = { instrument="steve" } ).displayInfo() />
 
 

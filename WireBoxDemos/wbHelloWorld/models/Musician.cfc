@@ -3,9 +3,9 @@ component
 	variables.name = "";
 	variables.instrument = "";
 
-	public any function init()
+	public any function init( string name )
 	{
-		variables.name = "David Bowie";
+		variables.name = arguments.name;
 		variables.instrument = "Guitar";
 	}
 
