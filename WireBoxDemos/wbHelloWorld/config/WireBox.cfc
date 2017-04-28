@@ -1,4 +1,5 @@
-component extends="WireBox.system.ioc.config.Binder"{
+component extends="WireBox.system.ioc.config.Binder"
+{
 	
 	/**
 	* Configure WireBox, that's it!
@@ -14,31 +15,10 @@ component extends="WireBox.system.ioc.config.Binder"{
 				scope   = "application", // server, cluster, session, application
 				key		= "wireBox"
 			},
-
-			// DSL Namespace registrations
-			customDSL = {
-				// namespace = "mapping name"
-			},
 			
-			// Custom Storage Scopes
-			customScopes = {
-				// annotationName = "mapping name"
-			},
-			
-			// Or do it this way....
 			// Package scan locations
-			scanLocations = [ "models" ],
+			scanLocations = [ "models" ]
 			
-			// Stop Recursions
-			stopRecursions = [],
-			
-			// Parent Injector to assign to the configured injector, this must be an object reference
-			parentInjector = "",
-			
-			// Register all event listeners here, they are created in the specified order
-			listeners = [
-				// { class="", name="", properties={} }
-			]			
 		};
 		
 	}	
