@@ -17,15 +17,23 @@ component extends="WireBox.system.ioc.config.Binder"{
 
 			// Package scan locations
 			scanLocations = [ "wbAspectOrientedProgramming.models" ]
+
+			,listeners = [
+			    { class="wirebox.system.aop.Mixer", properties={} }
+			]
 			
 		};
 		
 		map( "constructedMusician" ).to( "wbAspectOrientedProgramming.models.Musician" )
-						  	 		.initArg( name="name", value="Les Claypool" )
-						  	 		.initArg( name="instrument", value="Bass Guitar" );
+						  	 		.initArg( name="name", value="Pete Best" )
+						  	 		.initArg( name="instrument", value="Drums" );
 
 		// add our AOP adivce
-		mapAspect( "constructedMusician" ).to( "models.MusicianAdvice" );
+		mapAspect( "MusicianAdvice" ).to( "wbAspectOrientedProgramming.models.MusicianAspect" );
+
+		bindAspect( classes=match().mappings('wbAspectOrientedProgramming.models.Musician'), 
+					methods=match().methods('displayMusicianDetails'), 
+					aspects="MusicianAdvice" );
 
 	}	
 

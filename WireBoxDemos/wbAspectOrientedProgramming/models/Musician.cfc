@@ -11,7 +11,7 @@ component
 		return this;
 	}
 
-	public any function displayInfo()
+	public any function displayMusicianDetails()
 	{
 		WriteOutput( "Name: " & variables.name );
 		WriteOutput( "<br />" );

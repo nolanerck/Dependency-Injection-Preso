@@ -7,7 +7,7 @@
 
 <cfset wirebox = createObject( "component", "wirebox.system.ioc.Injector" ).init(  binder = myConfig ) />
 
-<cfset wirebox.getInstance( "constructedMusician" ).displayInfo() />
+<cfset wirebox.getInstance( "constructedMusician" ).displayMusicianDetails() />
 
 
 
