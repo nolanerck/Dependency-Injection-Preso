@@ -2,8 +2,8 @@
 
 <cfset myConfig = createObject( "component", "config.WireBox" ) />
 
-<cfset injector = createObject( "component", "wirebox.system.ioc.Injector" ).init(  binder = myConfig ) />
+<cfset wirebox = createObject( "component", "wirebox.system.ioc.Injector" ).init(  binder = myConfig ) />
 
-<cfset injector.getInstance( "Musician" ).displayInfo() />
+<cfset wirebox.getInstance( "Musician" ).displayInfo() />
 
 
