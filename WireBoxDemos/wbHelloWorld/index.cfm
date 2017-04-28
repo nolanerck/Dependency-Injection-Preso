@@ -2,6 +2,6 @@
 
 <cfset injector = createObject( "component", "wirebox.system.ioc.Injector" ).init() />
 
-<cfset injector.getInstance( "models.Musician" ).displayInfo() />
+<cfset injector.getInstance( "wbHelloWorld.models.Musician" ).displayInfo() />
 
 
