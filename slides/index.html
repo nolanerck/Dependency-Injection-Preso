@@ -341,17 +341,14 @@ mailSvc.sendEmail();
 				<section>
 					<h2>Bean Management</h2>
 					<p>New Way</p>
-<pre class="code">WireBox.getBean( “mailService” ).sendMail();</pre>
-				</section>
+<pre class="code">WireBox.getInstance( “mailService” ).sendMail();</pre>
 
-				<section>
-					<h2>Bean Management</h2>
-					<p>New Way</p>
-<pre class="code">WireBox.getBean( “mailService” ).sendMail();</pre>
-					<p>Yes, 1 line of code.</p>
-					<p>Yes, it is THAT easy.</p>
-					<br />
-					<p>(I'm over simplifying a little.)</p>
+					<div class="fragment">
+						<p>Yes, 1 line of code.</p>
+						<p>Yes, it is THAT easy.</p>
+						<br />
+						<p>(I'm over simplifying a little.)</p>
+					</div>
 				</section>
 
 				<section>
@@ -444,7 +441,7 @@ rg.setGroupName( myBandName );
 	&lt;property name=”groupName” value=”Depeche Mode”/&gt;
 &lt;/class&gt;
 
-&lt;rg = ColdSpring.getBean( “RockGroup” );&gt;
+&lt;rg = DI.getBean( “RockGroup” );&gt;
 </pre>
 					<p>
 						...any time I make a RockGroup, it will automatically initialize the “groupName” variable to the 
@@ -462,37 +459,49 @@ rg.setGroupName( myBandName );
 					<p>Kind of the same thing...</p>
 				</section>
 
+<style>
+.left {
+  left:-8.33%;
+  text-align: left;
+  float: left;
+  width:50%;
+  z-index:-10;
+}
+
+.right {
+  left:31.25%;
+  top: 75px;
+  float: right;
+  text-align: right;
+  z-index:-10;
+  width:50%;
+}
+</style>
+
 				<section>
 					<h2>Inversion of Control (IOC)</h2>
-<span width="45%">
+<pre class="code">
 class RockGroup{
+	private String groupName;
+	public String getGroupName(){ ... }
+	public void setGroupName( String name ) {...}
 
-private String groupName;
-public String getGroupName(){ ... }
-public void setGroupName( String name ) {...}
-
-private Musician singer;
-public Musician getSinger(){ ... }
-public void setSinger( Musician m ) { ... }
+	private Musician singer;
+	public Musician getSinger(){ ... }
+	public void setSinger( Musician m ) { ... } 
 }
-</span>
-<span width="45%">
 class Musician{
-
-private String name;
-private int yearsSober;
-private int age;
-
-public String getName() { return name; }
-public void setName(String n){ this.name = n; }
-
-public int getYearsSober() { ... }
-public void setYearsSober(int y) { ... }
-
-public void setAge( int a ){ ... }
-public int getAge(){ return age; } 
+	private String name;
+	private int yearsSober;
+	private int age;
+	public String getName() { return name; }
+	public void setName(String n){ this.name = n; }
+	public int getYearsSober() { ... }
+	public void setYearsSober(int y) { ... }
+	public void setAge( int a ){ ... }
+	public int getAge(){ return age; } 
 }
-</span>
+</pre>
 				</section>
 
 				<section>
@@ -638,10 +647,10 @@ rg.setMusician( m );
 					<h2>Aspect Oriented Programming (AOP)</h2>
 					<p>Example: drawSalesReport()</p>
 					<p>In your AOP library:</p>
-&lt;pre class="code"&gt;
+<pre class="code">
 &lt;func name=”drawSalesReport”&gt;
-&lt;aspect before run=”checkIfLoggedIn” /&gt;
-&lt;aspect after run=”saveToDebugLogFile” /&gt;
+	&lt;aspect before run=”checkIfLoggedIn” /&gt;
+	&lt;aspect after run=”saveToDebugLogFile” /&gt;
 &lt;/func&gt;
 </pre>		
 				</section>
@@ -653,15 +662,15 @@ rg.setMusician( m );
 <pre class="code">
 checkIfLoggedIn();
 drawSalesReport( UserID=555, 
-				 dtCreated='1/1/2015' );
+                 dtCreated='1/1/2015' );
 SaveToDebugLogFile();
 </pre>
 
 					<p>What happens now is...</p>
 <pre class="code">
 DIFramework.runWithAdvice( “drawSalesReport”, 
-						   { UserID=555, 
-                             dtCreated='1/1/2015' } );
+                           { UserID=555, 
+                           dtCreated='1/1/2015' } );
 </pre>
 
 					<p>and that does all 3 things, in correct order.</p>
@@ -687,12 +696,12 @@ DIFramework.runWithAdvice( “drawSalesReport”,
 				</section>
 				<section>
 					<h2>Aspect Oriented Programming (AOP)</h2>
-I'd have to set some kind of “flag”:
+<p>I'd have to set some kind of “flag”:</p>
 <pre class="code">
 &lt;cfif isProduction&gt;
 	&lt;cftry&gt;
 		&lt;cfquery name=”qryGetUsers”&gt;
-			&lt;SELECT * FROM User&gt;
+			&lt;SELECT * FROM Users&gt;
 		&lt;/cfquery&gt;
 	&lt;cfcatch&gt;
 		&lt;cflog ... /&gt;
@@ -700,7 +709,7 @@ I'd have to set some kind of “flag”:
 &lt;/cftry&gt;
 &lt;cfelse&gt;
 &lt;cfquery name=”qryGetUsers”&gt;
-&lt;ELECT * FROM Users&gt;
+&lt;SELECT * FROM Users&gt;
 &lt;/cfquery&gt;
 &lt;/cfif&gt;
 &lt;/cfelse&gt;
@@ -733,14 +742,14 @@ I'd have to set some kind of “flag”:
 &lt;/advice&gt;
 
 function getUsersWithAdvice( funcToRun ) {
-    if( isProduction ) {
-try{ 
-#funcToRun#(); 
-}
-catch{ … }
-}else{  
-#funcToRun#(); 
-}
+     if( isProduction ) {
+         try{ 
+              #funcToRun#(); 
+         }
+         catch{ ... }
+     }else{  
+         #funcToRun#(); 
+     }
 }
 </pre>
 				</section>
