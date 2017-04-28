@@ -708,9 +708,9 @@ DIFramework.runWithAdvice( “drawSalesReport”,
 	&lt;/cfcatch&gt;
 &lt;/cftry&gt;
 &lt;cfelse&gt;
-&lt;cfquery name=”qryGetUsers”&gt;
-&lt;SELECT * FROM Users&gt;
-&lt;/cfquery&gt;
+	&lt;cfquery name=”qryGetUsers”&gt;
+		&lt;SELECT * FROM Users&gt;
+	&lt;/cfquery&gt;
 &lt;/cfif&gt;
 &lt;/cfelse&gt;
 </pre>
@@ -757,7 +757,7 @@ function getUsersWithAdvice( funcToRun ) {
 				<section>
 					<h2>Aspect Oriented Programming (AOP)</h2>
 					<p>Can also use it for...</p>
-					<p>SaaS feature flags - turn on functionality only when a customer pays for it.  No need to edit code, just toggle a config.</p>
+					<p>SaaS feature flags - turn on functionality only when a customer pays for it.  No need to edit code/database, just toggle a config.</p>
 					<p>Swap out 3rd party/vendor integrations easily.</p>
 					<p>Cranky vendor: “it will take you months to remove our tech from your product.”</p>
 					<p>App with AOP: "No, actually it will take me 5 minutes"</p>
@@ -832,11 +832,10 @@ function getUsersWithAdvice( funcToRun ) {
 
 					<p>Book: Spring In Action (Java)</p>
 					<p>Book: Head First Design Patterns</p>
-					<p>Framework/1, DI/1 and AOP/1</p>
 					<p>WireBox documentation</p>
 					<p>SpringByExample.org</p>
 					<p>Java code, but explanation of the general concepts is pretty good.</p>
-
+					<p>Framework/1, DI/1 and AOP/1</p>
 					<p>The ColdSpring docs are good too.</p>
 				</section>
 
