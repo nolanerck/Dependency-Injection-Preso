@@ -8,6 +8,17 @@
 
 		<link rel="stylesheet" href="../Reveal.js/css/reveal.css">
 		<link rel="stylesheet" href="../Reveal.js/css/theme/moon.css" id="theme">
+
+		<script>
+		  if( window.location.search.match( /print-pdf/gi ) ) {
+		    var link = document.createElement( 'link' );
+		    link.rel = 'stylesheet';
+		    link.type = 'text/css';
+		    link.href = '../Reveal.js/css/print/pdf.css';
+		    document.getElementsByTagName( 'head' )[0].appendChild( link );
+		  }
+		</script>
+
 		<style>
 			.reveal h2 
 			{ 
@@ -861,7 +872,6 @@ function getUsersWithAdvice( funcToRun ) {
 			</div>
 		</div>
 		<script src="../Reveal.js/js/reveal.js"></script>
-
 		<script>
 			Reveal.initialize();
 		</script>
