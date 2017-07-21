@@ -9,7 +9,7 @@ component implements="wirebox.system.aop.MethodInterceptor"
 	{
 		var response = arguments.invocation.proceed();
 		
-		response = "checking permissions...<br />" & response & "<br />logging this call to a security audit log...";
+		response = "checking permissions...<br />" & response & "<br />exporting a copy of the data to the backkup server...";
 
 		return response;
 	}

@@ -207,7 +207,7 @@
 				</section>
 
 				<section>
-					<h2>What’s a Bean?</h2>
+					<h2>What's a Bean?</h2>
 					<p>A “thing" your D/I framework knows about.</p>
 <pre class="code">
 class User{ ... }<br />
@@ -216,8 +216,8 @@ class DateUtils { ... }
 
 					<p>In your DI framework:</p>
 <pre class="code">
-bean id="myUser" class="User"
-bean id="myDateUtils" class="DateUtils"
+bean id="myUser" class="www.components.User"
+bean id="myDateUtils" class="www.components.DateUtils"
 </pre>
 
 					<p>(Exact syntax varies between DI libraries.)</p>
@@ -635,6 +635,7 @@ rg.setMusician( m );
 					<h2>Aspect Oriented Programming (AOP)</h2>
 					<ul>
 						<li>AKA “Cross Cutting”.</li>
+						<li>Not just for logging (thanks, Mark Mandel!)</li>
 						<li>Change the “aspect” of how a function is called.</li>
 						<li>Say I have a foo() method.</li>
 						<li>Any time foo() is called...
@@ -661,7 +662,7 @@ rg.setMusician( m );
 <pre class="code">
 &lt;func name=”drawSalesReport”&gt;
 	&lt;aspect before run=”checkIfLoggedIn” /&gt;
-	&lt;aspect after run=”saveToDebugLogFile” /&gt;
+	&lt;aspect after run=”saveCopyToBackupServer” /&gt;
 &lt;/func&gt;
 </pre>		
 				</section>
@@ -674,7 +675,7 @@ rg.setMusician( m );
 checkIfLoggedIn();
 drawSalesReport( UserID=555, 
                  dtCreated='1/1/2015' );
-SaveToDebugLogFile();
+SaveCopyToBackupServer();
 </pre>
 
 					<p>What happens now is...</p>
@@ -717,13 +718,12 @@ DIFramework.runWithAdvice( “drawSalesReport”,
 	&lt;cfcatch&gt;
 		&lt;cflog ... /&gt;
 	&lt;/cfcatch&gt;
-&lt;/cftry&gt;
+	&lt;/cftry&gt;
 &lt;cfelse&gt;
 	&lt;cfquery name=”qryGetUsers”&gt;
 		&lt;SELECT * FROM Users&gt;
 	&lt;/cfquery&gt;
 &lt;/cfif&gt;
-&lt;/cfelse&gt;
 </pre>
 					<p>
 						Duplicate Code!<br/>
@@ -766,7 +766,7 @@ function getUsersWithAdvice( funcToRun ) {
 				</section>
 
 				<section>
-					<h2>Aspect Oriented Programming (AOP)</h2>
+					<h2>Real World Uses of DI</h2>
 					<p>Can also use it for...</p>
 					<p>SaaS feature flags - turn on functionality only when a customer pays for it.  No need to edit code/database, just toggle a config.</p>
 					<p>Swap out 3rd party/vendor integrations easily.</p>
@@ -844,8 +844,7 @@ function getUsersWithAdvice( funcToRun ) {
 					<p>Book: Spring In Action (Java)</p>
 					<p>Book: Head First Design Patterns</p>
 					<p>WireBox documentation</p>
-					<p>SpringByExample.org</p>
-					<p>Java code, but explanation of the general concepts is pretty good.</p>
+					<p>SpringByExample.org (Java code, good explanations.)</p>
 					<p>Framework/1, DI/1 and AOP/1</p>
 					<p>The ColdSpring docs are good too.</p>
 				</section>
