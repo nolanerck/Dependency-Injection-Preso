@@ -9,16 +9,6 @@
 		<link rel="stylesheet" href="../Reveal.js/css/reveal.css">
 		<link rel="stylesheet" href="../Reveal.js/css/theme/moon.css" id="theme">
 
-		<script>
-		  if( window.location.search.match( /print-pdf/gi ) ) {
-		    var link = document.createElement( 'link' );
-		    link.rel = 'stylesheet';
-		    link.type = 'text/css';
-		    link.href = '../Reveal.js/css/print/pdf.css';
-		    document.getElementsByTagName( 'head' )[0].appendChild( link );
-		  }
-		</script>
-
 		<style>
 			.reveal h2 
 			{ 
@@ -71,22 +61,24 @@
 							</ul>
 						</li>
 
-						<li>ColdFusion, C++, Java, jQuery, PHP, .NET, HTML5, Android, SQL, etc...</li>
+						<li>ColdFusion, C++, Java, jQuery, PHP, .NET, HTML5, Angular, SQL, etc...</li>
 						<li>Manager of SacInteractive User Group</li>
 						<li>Reformed Video Game Developer (Grim Fandango, SimPark, StarWars Rogue Squadron, etc).</li>
 						<li>Music Junkie</li>
 					</ul>
 				</section>
 
-				<section data-background-image="./images/cd_shelf.png">
-				</section>
-
-				<section data-background-image="./images/vinyl_shelf.png">
+				<section data-background-image="./images/record-collection.jpg" data-background-size="contain">
 				</section>
 
 				<section data-background-image="./images/charlie_brown.png" data-background-size="contain">
 				</section>
 
+				<section>
+					<h2>Code And Slides</h2>
+					<p class="centered">github.com/nolanerck</p>
+					<p class="centered">Dependency-Injection-Preso</p>
+				</section>
 
 				<section>
 					<h2>Today's Agenda</h2>
@@ -109,7 +101,7 @@
 						<li>Have some experience building classes and objects.</li>
 						<li>Don't need to be an expert.</li>
 						<li>Don't need to have used an MVC framework.</li>
-						<li>D/I frameworks can be totally separate.</li>
+						<li>DI frameworks can be totally separate.</li>
 						<li>And 1 more thing you need to know...</li>
 					</ul>
 				</section>
@@ -118,9 +110,9 @@
 					<h2>Prerequisites</h2>
 
 					<ul>
-						<li>...Object Oriented Programming is hard.</li>
+						<li>Object Oriented Programming is hard.</li>
 						<li>And some of it is confusing at first.</li>
-						<li>And that's NORMAL.</li>
+						<li class="fragment">And that's NORMAL.</li>
 					</ul>
 				</section>
 
@@ -143,10 +135,10 @@
 						<li>There are lots of design patterns:
 							<ul>
 								<li>Dependency Injection is 1 design pattern</li>
-								<li>Inversion of Control (IOC), Aspect Oriented Programming (AOP) and Bean Management are all “variations on that theme".</li>
+								<li>Inversion of Control (IOC), Aspect Oriented Programming (AOP) and Bean Management are all variations on that concept.</li>
 							</ul>
 						</li>
-						<li>There are lots of others too.</li>
+						<li>Many others too.</li>
 					</ul>
 				</section>
 
@@ -170,7 +162,7 @@
 				</section>
 
 				<section>
-					<h2>When / Why Use D/I?</h2>
+					<h2>When and Why Use DI?</h2>
 
 					<p>Short answer:<br />
 						When you have lots of classes that talk to each other, want to keep code organized, and make it easy 
@@ -185,16 +177,16 @@
 				<section>
 					<h2>Does this mean...</h2>
 					<p>
-						I have to rebuild my entire app to use D/I?<br />
-						<em>No.  But you might get more benefits if you make a few changes to legacy code along the way.</em>
+						I have to rebuild my entire app to use DI?<br />
+						<em>No. But you get more benefits if you make a few changes to legacy code along the way.</em>
 					</p>
 					<p>
 						I have to learn a new way to code all my classes?<br />
-						<em>No.  You can leave everything as-is.</em>
+						<em>No. You can leave everything as-is.</em>
 					</p>
 					<p>
 						<em>
-							The nice thing about D/I is you can use it or not use it. If you want to write code the “old way" 
+							The nice thing about DI is you can use it or not use it. If you want to write code the “old way" 
 							in part of your app, there's nothing stopping you from doing so. It will all still work as-is.
 						</em>
 					</p>
@@ -208,7 +200,7 @@
 
 				<section>
 					<h2>What's a Bean?</h2>
-					<p>A “thing" your D/I framework knows about.</p>
+					<p>A “thing" your DI framework knows about.</p>
 <pre class="code">
 class User{ ... }<br />
 class DateUtils { ... }
@@ -216,8 +208,8 @@ class DateUtils { ... }
 
 					<p>In your DI framework:</p>
 <pre class="code">
-bean id="myUser" class="www.components.User"
-bean id="myDateUtils" class="www.components.DateUtils"
+bean id="myUser" class="path.to.my.files.User"
+bean id="myDateUtils" class="path.to.my.files.DateUtils"
 </pre>
 
 					<p>(Exact syntax varies between DI libraries.)</p>
@@ -238,7 +230,7 @@ bean id="myDateUtils" class="www.components.DateUtils"
 </pre>
 					<p>Usage:</p>
 <pre class="code">
-myMailService = CreateObject( “MailService" );
+myMailService = CreateObject( "component", "MailService" );
 myMailService.sendEmail( to="...", from="...", body="..." );
 </pre>
 				</section>
@@ -310,15 +302,15 @@ D d = new D( c );
 
 				<section>
 					<h2>Bean Management</h2>
-						<p>With a D/I library that does Bean Management, you'd write something like this instead...</p>
+						<p>With a DI library that does Bean Management, you'd write something like this instead...</p>
 
 <pre class="code">D d = ColdSpring.getBean( “D” );</pre>
 
 						<p>4 lines of code just became 1. And no more boilerplate stuff!</p>
 
-						<p>You tell your D/I framework “I need a D. Go find out what D depends on, make those as needed, and hand me back D when you're done.”</p>
+						<p>You tell your DI framework “I need a D. Go find out what D depends on, make those as needed, and hand me back D when you're done.”</p>
 
-						<p>(“ColdSpring” is a placeholder here for any D/I framework. They all work about the same.)</p>
+						<p>(“ColdSpring” is a placeholder here for any DI framework. They all work about the same.)</p>
 				</section>
 
 				<section>
@@ -338,11 +330,11 @@ D d = new D( c );
 					<h2>Bean Management</h2>
 					<p>Old Way</p>
 <pre class="code">
-mySecLogin = CreateObject( “component”, “SecurityLogin”);
+myUserCred = CreateObject( “component”, “userCredentials”);
 myDeptDAO = CreateObject(“component”,“DepartmentDAO”);
 dept = CreateObject( “component”, “Department” );
 
-dept.init( mySecLogin, myDeptDAO );
+dept.init( myUserCred, myDeptDAO );
 mailSvc = CreateObject( “component”, “MailService” );
 mailSvc.init( dept );
 mailSvc.sendEmail();
@@ -364,7 +356,7 @@ mailSvc.sendEmail();
 
 				<section>
 					<h2>Bean Management</h2>
-					<p>So how does the D/I framework “know” that I need an A, B and C to make a D object?</p>
+					<p>So how does the DI framework “know” that I need an A, B and C to make a D object?</p>
 					<ul>
 						<li>Varies a little from framework to framework.</li>
 						<li>
@@ -446,7 +438,7 @@ rg.setGroupName( myBandName );
 
 				<section>
 					<h2>Inversion of Control (IOC)</h2>
-					<p>Using a D/I framework, you can have a “config” that notes default values for your classes:</p>
+					<p>Using a DI framework, you can have a “config” that notes default values for your classes:</p>
 <pre class="code">
 &lt;class name=”RockGroup”&gt;
 	&lt;property name=”groupName” value=”Depeche Mode”/&gt;
@@ -517,7 +509,7 @@ class Musician{
 
 				<section>
 					<h2>Inversion of Control (IOC)</h2>
-<p>With straight code...</p>
+<p>With regular code...</p>
 <pre class="code">
 Musician m = new Musician();
 m.name = “George Harrison”;
@@ -532,7 +524,7 @@ rg.setMusician( m );
 
 				<section>
 					<h2>Inversion of Control (IOC)</h2>
-					<p>With D/I...</p>
+					<p>With DI...</p>
 
 <pre class="code">RockGroup rg = Spring.getBean(“RockGroup”);</pre>
 				</section>
@@ -608,7 +600,7 @@ rg.setMusician( m );
 
 				<section>
 					<h2>Inversion of Control (IOC)</h2>
-					<p>Swapping out one type of Musician for another doesn't require recompiling code, just change a config:</p>
+					<p>Swapping out one type of Musician for another: move from Pete Best to Ringo Starr</p>
 <pre class="code">
 &lt;class name=”Drummer” id=”drummerBean2”&gt;
 	&lt;property name=”name” value=”Ringo Starr” /&gt;
@@ -662,7 +654,7 @@ rg.setMusician( m );
 <pre class="code">
 &lt;func name=”drawSalesReport”&gt;
 	&lt;aspect before run=”checkIfLoggedIn” /&gt;
-	&lt;aspect after run=”saveCopyToBackupServer” /&gt;
+	&lt;aspect after run=”saveCopyToReportsServer” /&gt;
 &lt;/func&gt;
 </pre>		
 				</section>
@@ -675,7 +667,7 @@ rg.setMusician( m );
 checkIfLoggedIn();
 drawSalesReport( UserID=555, 
                  dtCreated='1/1/2015' );
-SaveCopyToBackupServer();
+”saveCopyToReportsServer”();
 </pre>
 
 					<p>What happens now is...</p>
@@ -770,20 +762,20 @@ function getUsersWithAdvice( funcToRun ) {
 					<p>Can also use it for...</p>
 					<p>SaaS feature flags - turn on functionality only when a customer pays for it.  No need to edit code/database, just toggle a config.</p>
 					<p>Swap out 3rd party/vendor integrations easily.</p>
-					<p>Cranky vendor: “it will take you months to remove our tech from your product.”</p>
-					<p>App with AOP: "No, actually it will take me 5 minutes"</p>
+					<p>Cranky vendor: “It will take you months to remove our tech from your product.”</p>
+					<p>App with AOP: "No, actually it will take me 5 minutes!"</p>
 				</section>
 
 				<section>
 					<h2>So what’s the catch?</h2>
 
-					<p>A new way of thinking about how you build your classes</p>
-					<p>Takes some getting used to</p>
+					<p>A new way of thinking about how you build your classes.</p>
+					<p>Takes some getting used to.</p>
 					<p>
 						A little extra “set up” work.<br />
 						Naming conventions, or typing some XML.
 					</p>
-					<p>Debugging errors can be slower at first due to learning curve</p>
+					<p>Debugging errors can be slower at first due to learning curve.</p>
 					<p>...but...</p>
 				</section>
 
@@ -846,7 +838,7 @@ function getUsersWithAdvice( funcToRun ) {
 					<p>WireBox documentation</p>
 					<p>SpringByExample.org (Java code, good explanations.)</p>
 					<p>Framework/1, DI/1 and AOP/1</p>
-					<p>The ColdSpring docs are good too.</p>
+					<p>The ColdSpring docs are good too</p>
 				</section>
 
 				<section>
@@ -859,11 +851,10 @@ function getUsersWithAdvice( funcToRun ) {
 						Blog: southofshasta.com
 					</p>
 					<p>
-						Slides and code samples on GitHub:
+						Slides and code samples:
 						<br />
-						nolanerck/Dependency-Injection-Preso
+						<a href="https://github.com/nolanerck/Dependency-Injection-Preso">github.com/nolanerck/Dependency-Injection-Preso</a>
 					</p>
-
 
 					<p>Thanks!</p>
 				</section>
@@ -871,9 +862,18 @@ function getUsersWithAdvice( funcToRun ) {
 			</div>
 		</div>
 		<script src="../Reveal.js/js/reveal.js"></script>
+
 		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) 
+			{
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = '../Reveal.js/css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+
 			Reveal.initialize();
 		</script>
-
 	</body>
 </html>
