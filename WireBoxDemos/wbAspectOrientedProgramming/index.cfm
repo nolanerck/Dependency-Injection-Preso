@@ -11,5 +11,5 @@
 
 
 <cfoutput>
-	myResponse:<br><br> #myResponse#
+	#myResponse#
 </cfoutput>

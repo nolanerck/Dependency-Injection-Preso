@@ -7,6 +7,8 @@ component
 	{
 		variables.name = arguments.name;
 		variables.instrument = arguments.instrument;
+
+		return this;
 	}
 
 	public any function displayInfo()

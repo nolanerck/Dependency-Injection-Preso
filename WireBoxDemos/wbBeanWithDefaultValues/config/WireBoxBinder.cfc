@@ -19,6 +19,8 @@ component extends="WireBox.system.ioc.config.Binder"{
 			scanLocations = [ "wbBeanWithDefaultValues.models" ]
 			
 		};
+
+		
 		
 		map( "constructedMusician" ).to( "wbBeanWithDefaultValues.models.Musician" )
 						  	 		.initArg( name="name", value="Les Claypool" )

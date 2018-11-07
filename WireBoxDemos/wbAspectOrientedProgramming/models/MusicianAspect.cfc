@@ -7,9 +7,11 @@ component implements="wirebox.system.aop.MethodInterceptor"
 
 	function invokeMethod( required any invocation ) output="false"
 	{
-		var response = arguments.invocation.proceed();
+		var actualMusicianFunctionResults = arguments.invocation.proceed();
 		
-		response = "checking permissions...<br />" & response & "<br />exporting a copy of the data to the backkup server...";
+		var response = "checking permissions...<br />" 
+						& actualMusicianFunctionResults 
+						& "<br />exporting a copy of the data to the backup server...";
 
 		return response;
 	}

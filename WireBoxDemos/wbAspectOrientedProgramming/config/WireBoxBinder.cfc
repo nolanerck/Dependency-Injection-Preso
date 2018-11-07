@@ -31,8 +31,8 @@ component extends="WireBox.system.ioc.config.Binder"{
 		// add our AOP adivce
 		mapAspect( "MusicianAdvice" ).to( "wbAspectOrientedProgramming.models.MusicianAspect" );
 
-		bindAspect( classes=match().mappings('constructedMusician'), 
-					methods=match().methods('displayMusicianDetails'), 
+		bindAspect( classes=match().mappings( 'constructedMusician' ), 
+					methods=match().methods( 'displayMusicianDetails' ), 
 					aspects="MusicianAdvice" );
 
 	}	

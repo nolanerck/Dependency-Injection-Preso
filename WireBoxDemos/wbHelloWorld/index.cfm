@@ -6,7 +6,10 @@
 <cfset musician = Createobject( "component", "wbHelloWorld.models.Musician" ).init() />
 <cfset musician.displayInfo() />
 
+<br /><br />
+
 <!--- new way --->
-<cfset wirebox.getInstance( "wbHelloWorld.models.Musician" ).displayInfo() />
+<cfset musician = wirebox.getInstance( "wbHelloWorld.models.Musician" ) />
+<cfset musician.displayInfo() />
 
 

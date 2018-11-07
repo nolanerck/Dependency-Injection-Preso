@@ -7,6 +7,8 @@ component
 	{
 		variables.name = "John Lennon";
 		variables.instrument = "Guitar";
+
+		return this;
 	}
 
 	public any function displayInfo()

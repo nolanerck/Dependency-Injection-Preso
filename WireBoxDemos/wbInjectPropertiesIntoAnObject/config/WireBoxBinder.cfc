@@ -40,11 +40,15 @@ component extends="WireBox.system.ioc.config.Binder"{
 				// { class="", name="", properties={} }
 			]			
 		};
-		
 	}
+
+	map( "constructedMusician" ).to( "wbBeanWithDefaultValues.models.Musician" )
+					  	 		.initArg( name="name", value="Martin Gore" )
+					  	 		.initArg( name="instrument", value="Guitar" );
 
 	map( "constructedRockGroup" ).to( "wbInjectPropertiesIntoAnObject.models.RockGroup" )
 						  		 .initArg( name="groupName", value="Depehe Mode" )
-						  		 .initArg( name="genre", value="Synth-Pop" );
+						  		 .initArg( name="genre", value="Synth-Pop" )
+						  		 .initArg( name="bandMember", ref="constructedMusician" );
 
 }

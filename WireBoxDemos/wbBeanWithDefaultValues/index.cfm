@@ -7,6 +7,10 @@
 
 <cfset wirebox = createObject( "component", "wirebox.system.ioc.Injector" ).init(  binder = myConfig ) />
 
+<!--- <cfset wirebox.getInstance( "musician" ).displayInfo() /> --->
+
+<br /><br />
+
 <!--- get it with the 'alias' from our Binder myConfig. note how displayInfo() used the map() settings. --->
 <cfset wirebox.getInstance( "constructedMusician" ).displayInfo() />
 
